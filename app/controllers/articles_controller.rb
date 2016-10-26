@@ -12,7 +12,8 @@ class ArticlesController < ApplicationController
 		if @article.save
 			redirect_to @article, notice: "Article has been published." 
 		else
-			#
+			flash.now[:alert] = "Article has not been published."
+			render "new"
 		end
 	end
 
