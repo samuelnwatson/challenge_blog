@@ -9,11 +9,16 @@
 
 <div id="articles">
   <% @articles.each do |article| %>
-    <h2><%= link_to article.name, article %></h2>
-    <p><%= article.content %></p> 
-    <span>
-      <th>Posted:</th>
-      <td><%= time_ago_in_words(article.created_at) %> ago</td>
-    </span>
+    <p>
+      <h2><%= link_to article.name, article %></h2>
+      <span>
+        <th>Posted:</th>
+        <td><%= time_ago_in_words(article.created_at) %> ago</td>
+      </span>
+      <p>
+        <%= markdown(first_200_characters(article.content)) %>
+      </p>
+      <p><%= link_to "...Read the rest here", article %></p>
+    </p>
   <% end %>
 </div>

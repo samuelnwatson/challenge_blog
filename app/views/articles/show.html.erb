@@ -21,4 +21,6 @@
 	<td><%= time_ago_in_words(@article.created_at) %> ago</td>
 </p>
 
-<p><%= @article.content %></p>
+<p>
+	<%= markdown(@article.content) %>
+</p>
