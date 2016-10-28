@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>challenge_blog</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+	  <title>Challenge Blog</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="container">
+			<% flash.each do |key, message| %>
+				<div class="alert alert-<%= key %>">
+					<%= message %>
+				</div>
+			<% end %>
 
-<% flash.each do |key, message| %>
-	<div><%= message %></div>
-<% end %>
-
-<%= yield %>
-
-</body>
+			<%= yield %>
+		</div>
+	</body>
 </html>
