@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap-sass', '~> 3.3'
 
+gem 'devise', '~> 3.4.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -42,6 +44,7 @@ end
 
 group :test do
   gem 'capybara', '~> 2.4'
+  gem 'factory_girl_rails', '~> 4.5'
 end
 
 group :development do

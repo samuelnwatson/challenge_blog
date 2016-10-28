@@ -11,7 +11,7 @@ RSpec.feature "Users can create new articles" do
 		fill_in "Content", with: "Body of text for the article"
 		click_button "Create Article"
 
-		expect(page).to have_content "Article has been published."
+		expect(page).to have_content "Article has been published."		
 	end
 
 	scenario "with invalid attributes" do
