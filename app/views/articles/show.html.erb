@@ -3,7 +3,6 @@
 		<%= @article.name %>
 	</h1>
 	<ul class="actions">
-
 		<li>
 			<%= link_to "Edit Article", edit_article_path(@article), class: "edit" %>
 		</li>
@@ -16,5 +15,10 @@
 		<li><%= link_to "Back", articles_path, class: "back" %></li>
 	</ul>
 </header>
+
+<p>
+	<th>Article Created:</th>
+	<td><%= time_ago_in_words(@article.created_at) %> ago</td>
+</p>
 
 <p><%= @article.content %></p>

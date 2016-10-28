@@ -66,3 +66,8 @@ a.show {
 .alert-alert {
 	@extend .alert-danger;
 }
+
+textarea {
+	width: 80%;
+	height: 150px;
+}
