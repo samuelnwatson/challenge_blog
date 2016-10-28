@@ -15,6 +15,10 @@
 	 }
 }
 
+body {
+	padding-top: 70px;
+}
+
 header { 
 	position: relative;
 	padding-bottom: 0px;
@@ -49,14 +53,10 @@ a.delete {
 	@extend .btn-danger;	
 }
 
-a.back {
-	@extend .btn;
-	@extend .btn-info;	
-}
-
-a.show {
+a.back, a.show {
 	@extend .btn;
 	@extend .btn-info;
+	max-width: 15em;
 }
 
 .alert-notice {

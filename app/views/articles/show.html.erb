@@ -3,16 +3,14 @@
 		<%= @article.name %>
 	</h1>
 	<ul class="actions">
+		<li><%= link_to "Back", articles_path, class: "back" %></li>
 		<li>
 			<%= link_to "Edit Article", edit_article_path(@article), class: "edit" %>
 		</li>
-
 		<li>
 			<%= link_to "Delete Article", article_path(@article), method: :delete,
 				data: { confirm: "Delete this article?" }, class: "delete" %>
 		</li>
-
-		<li><%= link_to "Back", articles_path, class: "back" %></li>
 	</ul>
 </header>
 

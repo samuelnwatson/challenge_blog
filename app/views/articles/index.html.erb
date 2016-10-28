@@ -1,5 +1,5 @@
 <header>
-  <h1>Challenge Blog!</h1>
+  <h2>Blog Posts:</h2>
   <ul class="actions">
     <li>
       <%= link_to "New Article", new_article_path, class: "new" %>
@@ -15,10 +15,8 @@
         <th>Posted:</th>
         <td><%= time_ago_in_words(article.created_at) %> ago</td>
       </span>
-      <p>
-        <%= markdown(first_200_characters(article.content)) %>
-      </p>
-      <p><%= link_to "...Read the rest here", article %></p>
+      <%= markdown(first_200_characters(article.content)) %>
+      <%= link_to "...Read the rest here", article, class: "show" %>
     </p>
   <% end %>
 </div>

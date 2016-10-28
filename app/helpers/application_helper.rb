@@ -31,6 +31,6 @@ module ApplicationHelper
 	end
 
 	def first_200_characters(text)
-		text[0..200]
+		text[0..200]+"...\n..."
 	end	  
 end
