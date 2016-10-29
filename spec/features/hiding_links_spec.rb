@@ -15,6 +15,11 @@ RSpec.feature "Users can only see the appropriate links" do
 			visit article_path(article)
 			expect(page).to_not have_content "New Comment"
 		end
+
+		scenario "can't see subscribe button" do
+			visit "/"
+			expect(page).to have_link "Subscribe"
+		end		
 	end
 
 	context "non-admin users (article viewers)" do
@@ -40,6 +45,11 @@ RSpec.feature "Users can only see the appropriate links" do
 		scenario "can see New Comment form" do
 			visit article_path(article)
 			expect(page).to have_content "New Comment"
+		end
+
+		scenario "can't see subscribe button" do
+			visit "/"
+			expect(page).to have_link "Subscribe"
 		end		
 	end
 
@@ -66,6 +76,11 @@ RSpec.feature "Users can only see the appropriate links" do
 		scenario "can see New Comment form" do
 			visit article_path(article)
 			expect(page).to have_content "New Comment"
-		end		
+		end
+
+		scenario "can't see subscribe button" do
+			visit "/"
+			expect(page).to_not have_link "Subscribe"
+		end
 	end
 end

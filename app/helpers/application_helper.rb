@@ -41,4 +41,8 @@ module ApplicationHelper
 	def users_only(&block)
 		block.call if current_user
 	end
+
+	def not_admin
+		!current_user.try(:admin?)
+	end
 end

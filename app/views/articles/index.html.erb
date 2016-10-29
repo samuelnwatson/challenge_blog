@@ -6,6 +6,11 @@
         <%= link_to "New Article", new_admin_article_path, class: "new" %>
       </li>
     <% end %>
+    <% if not_admin %>
+      <li>
+        <%= link_to "Subscribe", "/", class: "edit" %>
+      </li>
+    <% end %>
   </ul>
 </header>
 
