@@ -1,0 +1,8 @@
+<header>
+	<h3>New Comment</h3>
+</header>
+
+<%= form_for [article, comment] do |f| %>
+		<%= f.text_area :text %>
+		<%= f.submit %>	
+<% end %>

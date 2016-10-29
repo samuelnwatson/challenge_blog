@@ -10,6 +10,11 @@ RSpec.feature "Users can only see the appropriate links" do
 			visit "/"
 			expect(page).not_to have_link "New Article"
 		end
+
+		scenario "cannot see New Comment form" do
+			visit article_path(article)
+			expect(page).to_not have_content "New Comment"
+		end
 	end
 
 	context "non-admin users (article viewers)" do
@@ -31,6 +36,11 @@ RSpec.feature "Users can only see the appropriate links" do
 			visit article_path(article)
 			expect(page).to_not have_link "Edit Article"
 		end
+		
+		scenario "can see New Comment form" do
+			visit article_path(article)
+			expect(page).to have_content "New Comment"
+		end		
 	end
 
 	context "admin users" do
@@ -52,5 +62,10 @@ RSpec.feature "Users can only see the appropriate links" do
 			visit article_path(article)
 			expect(page).to have_link "Edit Article"
 		end
+		
+		scenario "can see New Comment form" do
+			visit article_path(article)
+			expect(page).to have_content "New Comment"
+		end		
 	end
 end

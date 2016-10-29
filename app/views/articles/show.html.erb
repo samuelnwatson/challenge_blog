@@ -24,3 +24,20 @@
 <p>
 	<%= markdown(@article.content) %>
 </p>
+
+<header>
+	<h3>Comments</h3>
+</header>
+
+<div id="comments">
+	<% if @article.comments.persisted.any? %>
+		<%= render @article.comments.persisted %>
+	<% else %>
+		<p>No comments yet for this article.</p>
+	<% end %>
+</div>
+<% users_only do %>
+	<p>
+		<%= render "comments/form", article: @article, comment: @comment %>
+	</p>
+<% end %>
