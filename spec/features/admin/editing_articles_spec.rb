@@ -1,5 +1,6 @@
 RSpec.feature "users can edit articles" do
 	before do
+		login_as(FactoryGirl.create(:user, :admin))		
 		FactoryGirl.create(:article, name: "My Article", content: "Minimum of ten characters.")
 		visit "/"
 		click_link "My Article"

@@ -1,9 +1,11 @@
 <header>
   <h2>Blog Posts:</h2>
   <ul class="actions">
-    <li>
-      <%= link_to "New Article", new_article_path, class: "new" %>
-    </li>
+    <% admins_only do %>
+      <li>
+        <%= link_to "New Article", new_admin_article_path, class: "new" %>
+      </li>
+    <% end %>
   </ul>
 </header>
 

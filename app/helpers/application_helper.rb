@@ -32,5 +32,9 @@ module ApplicationHelper
 
 	def first_200_characters(text)
 		text[0..200]+"...\n..."
-	end	  
+	end
+
+	def admins_only(&block)
+		block.call if current_user.try(:admin?)
+	end
 end
