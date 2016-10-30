@@ -6,5 +6,9 @@ FactoryGirl.define do
 		trait :admin do
 			admin true
 		end
+
+		trait :subscribed do
+			subscribed true
+		end			
 	end
 end
