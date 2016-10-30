@@ -7,9 +7,15 @@
       </li>
     <% end %>
     <% if not_admin %>
-      <li>
-        <%= link_to "Subscribe", "/", class: "edit" %>
-      </li>
+      <% if subscribed? %>
+        <li>
+          <%= link_to "Unsubscribe", u_users_index_path, class: "edit" %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Subscribe", u_users_index_path, class: "edit" %>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </header>

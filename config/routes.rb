@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :u do
+    get 'users/index'
+    resources :users_u, :controller => 'users'    
+  end
+
   root "articles#index"
 
   resources :articles, only: [:index, :show] do
@@ -7,7 +12,7 @@ Rails.application.routes.draw do
   end
   
   devise_for :users
-  
+
   namespace :admin do
     root "application#index"
 

@@ -45,4 +45,8 @@ module ApplicationHelper
 	def not_admin
 		!current_user.try(:admin?)
 	end
+
+	def subscribed?
+		current_user.try(:subscribed?)
+	end
 end
