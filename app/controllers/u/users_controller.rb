@@ -1,7 +1,7 @@
 class U::UsersController < ApplicationController
 	def index
 		@user = current_user
-		subscribe		
+		subscribe	
 	end
 
 private

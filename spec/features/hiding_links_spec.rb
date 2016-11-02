@@ -18,7 +18,7 @@ RSpec.feature "Users can only see the appropriate links" do
 
 		scenario "can't see subscribe button" do
 			visit "/"
-			expect(page).to have_link "Subscribe"
+			expect(page).to_not have_link "Subscribe"
 		end		
 	end
 
