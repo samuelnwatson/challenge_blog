@@ -3,7 +3,7 @@ class SendNotifications < ApplicationMailer
 		@article = article
 		@email = email
 
-		subject = "New challenge blog article: #{article.content}"
-		SendEmailJob.set(wait: 20.seconds).perform_later(@email, subject)
+		@subject = "#{@article}"
+		SendEmailJob.set(wait: 20.seconds).perform_later(@email, @subject)
 	end
 end

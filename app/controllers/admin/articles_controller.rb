@@ -39,11 +39,10 @@ class Admin::ArticlesController < Admin::ApplicationController
 
 private
 	def notify_subcribers
-		@user_email
 		@all_subscribers = User.get_subscribers		
 		@all_subscribers.each do |user|
 			@user_email = user.email
-			SendNotifications.created(@article, @user_email).deliver_now#_later
+			SendNotifications.created(@user_email, @article.name).deliver_later
 		end
 	end
 
