@@ -42,7 +42,8 @@ private
 		@all_subscribers = User.get_subscribers		
 		@all_subscribers.each do |user|
 			@user_email = user.email
-			SendNotifications.created(@user_email, @article.name).deliver_later
+
+			SendNotifications.created(@user_email, @article.name)
 		end
 	end
 

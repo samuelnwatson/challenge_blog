@@ -17,7 +17,11 @@ RSpec.feature "Users can be sent emails on new articles posted" do
 		fill_in "Content", with: "Body of text for the article"
 		click_button "Create Article"
 
-		expect(SendNotifications).to receive(:created).with(site_user.email, "Blog Entry").and_return(@message_delivery)
-		expect(@message_delivery).to receive(:deliver_later)
+		expect { SendNotifications.created }.to change { ActionMailer::Base.deliveries.count }.by(1) 
+
+		email = find_email!(site_user.email)
+
+		click_second_link_in_email(email)
+		expect(current_path).to eq u_users_index_path(site_user)
 	end
 end
