@@ -15,6 +15,9 @@ RSpec.feature "Users can be sent emails on new articles posted" do
 		fill_in "Content", with: "Body of text for the article"
 		click_button "Create Article"
 
+		ActiveJob::Base.queue_adapter = :test
+	    expect(SendEmailJob).to have_been_enqueued.with(site_user.email, "Blog Entry")
+
 		email = find_email!(site_user.email)
 
 		click_first_link_in_email(email)
