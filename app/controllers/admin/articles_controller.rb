@@ -5,7 +5,6 @@ class Admin::ArticlesController < Admin::ApplicationController
 
 	def create
 		@article = Article.new(article_params)
-
 		if @article.save
 			notify_subcribers
 			redirect_to @article, notice: "Article has been published." 
@@ -39,10 +38,8 @@ class Admin::ArticlesController < Admin::ApplicationController
 
 private
 	def notify_subcribers
-		@all_subscribers = User.get_subscribers		
-		@all_subscribers.each do |user|
+		Article.get_subscribers.each do |user|
 			@user_email = user.email
-
 			SendNotifications.created(@user_email, @article.name)
 		end
 	end

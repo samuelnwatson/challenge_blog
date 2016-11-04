@@ -4,9 +4,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :articles
-
-  def self.get_subscribers
-  	self.where(subscribed: true)
-  end       
+  has_many :articles     
 end
