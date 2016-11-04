@@ -1,8 +1,5 @@
 class SendNotifications < ApplicationMailer
-	def created(email, article)
-		@email = email
-		@article = article
-
-		SendEmailJob.perform_later(@email, @article)
+	def created(email, subject)
+		SendEmailJob.perform_later(email, subject)
 	end
 end
