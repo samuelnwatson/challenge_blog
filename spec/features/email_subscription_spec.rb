@@ -3,6 +3,8 @@ require "rails_helper"
 RSpec.feature "Users can be sent emails on new articles posted" do
 	let!(:site_owner) { FactoryGirl.create(:user, :admin, email: "site_owner@challengeblog.com") }
 	let!(:site_user) { FactoryGirl.create(:user, :subscribed, email: "site_user@challengeblog.com") }
+	let!(:entry) { FactoryGirl.create(:article, name: "Blog Entry", content: "Minimum of ten characters.") }
+
 
 	before do
 		login_as(site_owner)
@@ -15,9 +17,13 @@ RSpec.feature "Users can be sent emails on new articles posted" do
 		fill_in "Content", with: "Body of text for the article"
 		click_button "Create Article"
 
-		ActiveJob::Base.queue_adapter = :test
-	    expect(SendEmailJob).to have_been_enqueued.with(site_user.email, "Blog Entry")
+		expect(SendNotifications).to(receive(:later).with(site_user.email, "Blog Entry"))
+	end
 
+
+	scenario "generated email links to unsubscribe" do
+		SendNotifications.now(site_user.email, entry)
+		
 		email = find_email!(site_user.email)
 
 		click_first_link_in_email(email)
