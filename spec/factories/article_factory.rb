@@ -1,5 +1,5 @@
 FactoryGirl.define do
-	factory :article do
-		name "Proxy Article"
-	end
+  factory :article do
+    name "Proxy Article"
+  end
 end

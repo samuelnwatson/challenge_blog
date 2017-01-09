@@ -1,42 +1,43 @@
 <header>
-	<h1>
-		<%= @article.name %>
-	</h1>
-	<ul class="actions">
-		<li><%= link_to "Back", articles_path, class: "back" %></li>
-		<% admins_only do %>
-			<li>
-				<%= link_to "Edit Article", edit_admin_article_path(@article), class: "edit" %>
-			</li>
-			<li>
-				<%= link_to "Delete Article", admin_article_path(@article), method: :delete,
-					data: { confirm: "Delete this article?" }, class: "delete" %>
-			</li>
-		<% end %>
-	</ul>
+  <h1>
+    <%= @article.name %>
+  </h1>
+  <ul class="actions">
+    <li><%= link_to "Back", articles_path, class: "back" %></li>
+    <% admins_only do %>
+      <li>
+        <%= link_to "Edit Article", edit_admin_article_path(@article), class: "edit" %>
+      </li>
+      <li>
+        <%= link_to "Delete Article", admin_article_path(@article), method: :delete,
+        data: { confirm: "Delete this article?" }, class: "delete" %>
+      </li>
+    <% end %>
+  </ul>
 </header>
 <p>
-	<th>Article Created:</th>
-	<td><%= time_ago_in_words(@article.created_at) %> ago</td>
+  <th>Article Created:</th>
+  <td><%= time_ago_in_words(@article.created_at) %> ago</td>
 </p>
 
 <p>
-	<%= markdown(@article.content) %>
+  <%= markdown(@article.content) %>
 </p>
 
 <header>
-	<h3>Comments</h3>
+  <h3>Comments</h3>
 </header>
 
 <div id="comments">
-	<% if @article.comments.persisted.any? %>
-		<%= render @article.comments.persisted %>
-	<% else %>
-		<p>No comments yet for this article.</p>
-	<% end %>
+  <% if @article.comments.persisted.any? %>
+    <%= render @article.comments.persisted %>
+  <% else %>
+    <p>No comments yet for this article.</p>
+  <% end %>
 </div>
+
 <% users_only do %>
-	<p>
-		<%= render "comments/form", article: @article, comment: @comment %>
-	</p>
+  <p>
+    <%= render "comments/form", article: @article, comment: @comment %>
+  </p>
 <% end %>

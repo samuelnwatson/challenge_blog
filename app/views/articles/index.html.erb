@@ -1,24 +1,24 @@
 <header>
   <h2>Blog Posts:</h2>
   <ul class="actions">
-    <% admins_only do %>
-      <li>
-        <%= link_to "New Article", new_admin_article_path, class: "new" %>
-      </li>
-    <% end %>
-    <% users_only do %>
-      <% if not_admin %>
-        <% if subscribed? %>
-          <li>
-            <%= link_to "Unsubscribe", u_users_index_path, class: "edit" %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "Subscribe", u_users_index_path, class: "edit" %>
-          </li>
-        <% end %>
+  <% admins_only do %>
+    <li>
+    <%= link_to "New Article", new_admin_article_path, class: "new" %>
+    </li>
+  <% end %>
+  <% users_only do %>
+    <% if not_admin %>
+      <% if subscribed? %>
+        <li>
+          <%= link_to "Unsubscribe", u_users_index_path, class: "edit" %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Subscribe", u_users_index_path, class: "edit" %>
+        </li>
       <% end %>
     <% end %>
+  <% end %>
   </ul>
 </header>
 

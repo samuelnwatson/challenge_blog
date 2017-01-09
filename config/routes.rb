@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   namespace :u do
     get 'users/index'
-    resources :users_u, :controller => 'users'    
+    resources :users_u, :controller => 'users'
   end
 
   root "articles#index"

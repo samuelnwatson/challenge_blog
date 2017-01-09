@@ -1,14 +1,14 @@
 <header>
-	<h1>Subscription Page</h1>
+  <h1>Subscription Page</h1>
 </header>
 
 <p>
-	<% if subscribed? %>
-		You have successfully subscribed!
-	<% else %>
-		You have successfully unsubscribed! :(
-	<% end %>
+  <% if subscribed? %>
+    You have successfully subscribed!
+  <% else %>
+    You have successfully unsubscribed! :(
+  <% end %>
 </p>
 <div>
-	<%= link_to "Return to Home", root_path, class: "show" %>
+  <%= link_to "Return to Home", root_path, class: "show" %>
 </div>
