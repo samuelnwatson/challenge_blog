@@ -5,7 +5,6 @@ class Article < ActiveRecord::Base
 
   belongs_to :users
 
-  def self.get_subscribers
-    User.where(subscribed: true)
-  end	
+  scope :get_subscribers, -> { User.where(subscribed: true) }
+
 end
