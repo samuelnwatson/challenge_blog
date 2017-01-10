@@ -64,7 +64,7 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  Action_mailer::Base.delivery_method = :smtp
+  ActionMailer::Base.delivery_method = :smtp
 
   host = "https://mychallengeblog.herokuapp.com"
 
