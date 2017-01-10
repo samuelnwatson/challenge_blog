@@ -10,11 +10,11 @@ class Article < ActiveRecord::Base
   protected
 
   def notify_subcribers
-    @subscribers = User.get_subscribers
+    subscribers = User.get_subscribers
 
-    @subscribers.each do |user|
-      @user_email = user.email
-      SendNotifications.later(@user_email, @article)
+    subscribers.each do |user|
+      user_email = user.email
+      SendNotifications.later(user_email, @article)
     end
   end
   

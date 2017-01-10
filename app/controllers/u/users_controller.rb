@@ -11,9 +11,10 @@ class U::UsersController < ApplicationController
   end
 
   def subscribe
-    if @user.subscribed
-      @user.subscribed = false
-      if @user.save
+    user = current_user
+    if user.subscribed
+      user.subscribed = false
+      if user.save
         flash.now[:alert] = "You have unsubscribed."
         render "index"
       else
@@ -21,8 +22,8 @@ class U::UsersController < ApplicationController
         render "index"
       end
     else 
-      @user.subscribed = true
-      if @user.save
+      user.subscribed = true
+      if user.save
         flash.now[:notice] = "You have subscribed."
         render "index"
       else
