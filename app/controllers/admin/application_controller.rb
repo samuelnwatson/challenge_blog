@@ -9,7 +9,7 @@ before_action :authorize_admin!
   private
 
   def all_subscribers
-    Article.get_subscribers
+    User.get_subscribers
   end
 
   def authorize_admin!

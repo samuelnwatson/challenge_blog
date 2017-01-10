@@ -6,7 +6,6 @@ class Admin::ArticlesController < Admin::ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      notify_subcribers
       redirect_to @article, notice: "Article has been published." 
     else
       flash.now[:alert] = "Article has not been published."
@@ -36,15 +35,6 @@ class Admin::ArticlesController < Admin::ApplicationController
   end
 
   private
-
-  def notify_subcribers
-    @subscribers = Article.get_subscribers
-
-    @subscribers.each do |user|
-      @user_email = user.email
-      SendNotifications.later(@user_email, @article)
-    end
-  end
 
   def article_params
     params.require(:article).permit(:name, :content)

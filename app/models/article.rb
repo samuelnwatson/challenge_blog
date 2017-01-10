@@ -5,6 +5,17 @@ class Article < ActiveRecord::Base
 
   belongs_to :users
 
-  scope :get_subscribers, -> { User.where(subscribed: true) }
+  after_save :notify_subcribers
 
+  protected
+
+  def notify_subcribers
+    @subscribers = User.get_subscribers
+
+    @subscribers.each do |user|
+      @user_email = user.email
+      SendNotifications.later(@user_email, @article)
+    end
+  end
+  
 end
