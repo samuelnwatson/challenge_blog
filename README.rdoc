@@ -2,6 +2,8 @@
 
 Blogging web app: Challenge Blog
 
+Link here: `https://mychallengeblog.herokuapp.com/`
+
 Allows for posting of articles in markdown, and for users to comment on them individually.
 
 Users can also sign-up via email and subscribe to receive email notifications on subsequent posts.
